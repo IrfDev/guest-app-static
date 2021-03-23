@@ -1,40 +1,39 @@
 const WebpackNotifierPlugin = require('webpack-notifier');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { HotModuleReplacementPlugin } = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
     main: './index.js',
   },
   output: {
-    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
     publicPath: './',
+    filename: 'bundle.js',
+    chunkFilename: '[name].bundle.js',
   },
-  watch: false,
-  externals: {
-    jquery: 'jQuery',
-  },
+
   mode: 'development',
+
   plugins: [
-    // Notify when build succeeds
     new WebpackNotifierPlugin({ alwaysNotify: true }),
 
-    // Minify CSS assets
-
-    // Use BrowserSync plugin for file changes. I.e. if a CSS/SASS/LESS file changes, the changes will be injected directly in the browser with no page load
-    new BrowserSyncPlugin(
-      {
-        proxy: 'mysite.local',
-        open: 'external',
-        host: 'mysite.local',
-        port: 3000,
-        files: ['./dist/main.css', './tailwind.config.js'],
-      },
-      {
-        // disable reload from the webpack plugin since browser-sync will handle CSS injections and JS reloads
-        reload: false,
-      }
-    ),
+    new HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve('./public/index.html'),
+    }),
   ],
+
+  devServer: {
+    contentBase: path.join(__dirname, './public'),
+    port: 3000,
+    publicPath: 'http://localhost:3000/',
+    hotOnly: true,
+    historyApiFallback: true,
+  },
+
   module: {
     rules: [
       {
@@ -53,6 +52,17 @@ module.exports = {
           {
             loader: 'file-loader',
           },
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          { loader: 'postcss-loader' },
         ],
       },
     ],

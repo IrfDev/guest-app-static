@@ -6,8 +6,8 @@
   "scripts": {
     "watch:sass": "npm run build:sass && npm run build:sass -- -w",
     "build:sass": "node-sass -r --output-style compressed src/styles.scss -o dist",
-    "start": "webpack serve --mode=development --open",
-    "build": "export NODE_ENV=production && webpack"
+    "start": "webpack serve --hot --mode development",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -40,8 +40,10 @@
   "dependencies": {
     "browser-sync": "^2.26.14",
     "browser-sync-webpack-plugin": "^2.3.0",
+    "html-webpack-plugin": "^5.3.1",
     "postcss-import": "^14.0.0",
     "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
     "webpack-notifier": "^1.13.0"
   }
 }
