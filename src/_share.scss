@@ -10,6 +10,33 @@ span.outlet-name.text-white {
   font-weight: 550;
 }
 
+#outlet-navbar {
+  flex: 0 0 420px;
+  max-width: 420px;
+  margin: auto;
+  text-align: center;
+}
+
+.outlet-body {
+  max-width: 420px;
+  margin: auto;
+  .outlet-row {
+    @apply mt-3;
+    flex: 0 0 420px;
+    max-width: 420px;
+    @apply mx-auto;
+  }
+}
+.outlet-timing {
+  border-radius: 0% 0% 0% 15px;
+  border: 2px solid black;
+  margin: auto;
+  animation: fadeIn 0.5s ease-in-out forwards;
+  font-weight: bolder;
+  font-size: 75%;
+  margin: auto;
+}
+
 .outlet-name.text-white {
   line-height: 1.2;
   font-size: 150%;
@@ -33,7 +60,7 @@ span.outlet-description.text-white {
 
 #outlet-navbar {
   background-color: #000000;
-  justify-content: center;
+
   position: absolute;
 }
 

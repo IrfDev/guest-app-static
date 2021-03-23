@@ -22,7 +22,20 @@ module.exports = {
 
     new HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
+      filename: 'index.html',
       template: path.resolve('./public/index.html'),
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'edn.html',
+      template: path.resolve('./public/edn.html'),
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'menu.html',
+      template: path.resolve('./public/menu.html'),
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'order.html',
+      template: path.resolve('./public/order.html'),
     }),
   ],
 
