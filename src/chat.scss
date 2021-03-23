@@ -1,0 +1,106 @@
+.chat-view {
+  .uncategorized {
+    animation: fadeInUp 0.5s 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+      backwards;
+    color: $alpha-color;
+  }
+  .text-card {
+    color: #000;
+    background-color: #dedede;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    transition: all ease-out 0.5s;
+    &:hover {
+      transition: all ease-in 0.4s;
+      box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.11);
+    }
+    ._text-wrapper {
+      transition: all ease-out 0.5s;
+      background-color: transparent;
+      .__text::selection {
+        transition: all ease-in 0.4s;
+        background-color: $alpha-color;
+        font-weight: 800;
+        border-radius: 25px;
+      }
+    }
+    .__icon {
+      cursor: pointer;
+      stroke: #000;
+      transition: all ease-out 0.5s;
+      stroke-width: 1.7;
+      width: 1.7rem;
+      @media screen and (min-width: 800px) {
+        width: 2.2rem;
+      }
+      &:hover {
+        transform: scale(1.04);
+        transition: all ease-in 0.4s;
+        stroke: $alpha-color;
+        stroke-width: 2.2;
+      }
+    }
+
+    animation: fadeIn 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) backwards;
+    animation-delay: calc(0.75s * var(--index));
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(0.2rem);
+      }
+    }
+  }
+  .content-column {
+    max-height: fit-content;
+    overflow-y: auto;
+    .-search-wrapper {
+      background-color: #c4c4c4;
+      color: #888888;
+      box-shadow: 3px 5px 4px 0px rgba(0, 0, 0, 0.068);
+      transition: all ease-out 0.5s;
+      &:hover {
+        transition: all ease-in 0.5s;
+        box-shadow: 3px 5px 15px 0px rgba(0, 0, 0, 0.103);
+      }
+      .__icon {
+        width: 1.5rem;
+        margin-right: 1rem;
+      }
+      animation: fadeInDown 0.5s 0.3s ease-in both;
+    }
+    .-card-listing {
+      .category-card {
+        background-color: #f1f1f1;
+        box-shadow: 3px 5px 4px 0px rgba(0, 0, 0, 0.3);
+        transition: all ease-out 0.5s;
+        &:hover {
+          transition: all ease-in 0.5s;
+          box-shadow: 3px 5px 35px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+          color: $alpha-color;
+          background-color: #000;
+        }
+        .--card-listing {
+          max-height: 20rem;
+        }
+
+        animation: fadeInUp 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+          backwards;
+        animation-delay: calc(0.6s * var(--index));
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(0.4rem);
+          }
+        }
+        @keyframes fadeInDown {
+          from {
+            opacity: 0;
+            transform: translateY(-0.2rem);
+          }
+        }
+      }
+    }
+  }
+}
