@@ -1,0 +1,50 @@
+.footer {
+	line-height: 60px;
+	z-index: 100000;
+	height: 5.3rem;
+}
+
+.directory-footer {
+	width: 100%;
+}
+
+.directory-footer {
+	background-color: #000000;
+	max-width: 380px;
+	flex: 0 0 380px;
+}
+
+@media screen and (min-width: 700px) {
+	.directory-footer {
+		flex: 0 0 400px;
+	}
+}
+
+a.footer-item {
+
+	@apply text-silver;
+	span.item-name {
+		@apply text-silver;
+	}
+	&:hover {
+		@apply text-silver-light;
+	}
+}
+
+a.footer-item.active {
+	span.item-icon {
+		@apply text-gold;
+	}
+	span.item-name {
+		@apply text-gold;
+	}
+	&:hover {
+		@apply text-gold-light;
+	}
+}
+
+a.footer-item.active > a.footer-item span.item-icon {
+	width: 100%;
+
+	height: 33px;
+}
