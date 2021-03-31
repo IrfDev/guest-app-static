@@ -12,9 +12,13 @@ span.outlet-name.text-white {
 
 #outlet-navbar {
   flex: 0 0 420px;
-  max-width: 420px;
   margin: auto;
   text-align: center;
+  max-width: $base-width;
+}
+
+main {
+  max-width: $base-width !important;
 }
 
 .outlet-body {

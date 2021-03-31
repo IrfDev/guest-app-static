@@ -4,6 +4,16 @@ const { HotModuleReplacementPlugin } = require('webpack');
 const path = require('path');
 const webpack = require('webpack');
 
+const views = [
+  'index',
+  'edn',
+  'order',
+  'order-details',
+  'menu',
+  'menus',
+  'order-review',
+];
+
 module.exports = {
   entry: {
     main: './index.js',
@@ -21,21 +31,12 @@ module.exports = {
     new WebpackNotifierPlugin({ alwaysNotify: true }),
 
     new HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.resolve('./public/index.html'),
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'edn.html',
-      template: path.resolve('./public/edn.html'),
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'menu.html',
-      template: path.resolve('./public/menu.html'),
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'order.html',
-      template: path.resolve('./public/order.html'),
+
+    ...views.flatMap((view) => {
+      return new HtmlWebpackPlugin({
+        filename: `${view}.html`,
+        template: path.resolve(`./public/${view}.html`),
+      });
     }),
   ],
 
